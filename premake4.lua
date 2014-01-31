@@ -199,6 +199,7 @@ solution (iif(release, slnname, "windirstat"))
         end
         files
         {
+            "3rdparty/*.h",
             "common/*.h",
             "common/*.cpp",
             "windirstat/*.cpp",
@@ -227,7 +228,7 @@ solution (iif(release, slnname, "windirstat"))
             ["Header Files/Common/*"] = { "common/*.h" },
             ["Header Files/Controls/*"] = { "windirstat/Controls/*.h" },
             ["Header Files/Dialogs/*"] = { "windirstat/Dialogs/*.h" },
-            ["Header Files/*"] = { "windirstat/*.h" },
+            ["Header Files/*"] = { "windirstat/*.h", "3rdparty/*.h" },
             ["Resource Files/*"] = { "windirstat/*.rc" },
             ["Resource Files/Resources/*"] = { "windirstat/res/*.*" },
             ["Source Files/Common/*"] = { "common/*.cpp" },
