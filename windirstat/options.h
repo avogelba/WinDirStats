@@ -26,15 +26,12 @@
 #define __WDS_OPTIONS_H__
 #pragma once
 
-#ifndef __NOT_WDS
 #include "treemap.h"
-#endif // __NOT_WDS
 #include <common/wds_constants.h>
 #include <3rdparty/SimpleIni.h>
 #include <atlbase.h> // CRegKey
 #include <memory>
 
-#ifndef __NOT_WDS
 class COptions;
 
 enum REFRESHPOLICY
@@ -63,120 +60,10 @@ struct USERDEFINEDCLEANUP
     bool waitForCompletion;
     REFRESHPOLICY refreshPolicy;
 };
-#endif // __NOT_WDS
 
 #define USERDEFINEDCLEANUPCOUNT 10
 
 #define TREELISTCOLORCOUNT 8
-
-// Base interface for retrieving/storing configuration
-// The ctor of derived classes is allowed to throw an HRESULT if something
-// goes wrong.
-class ICfgStorage
-{
-public:
-    virtual void setString(LPCTSTR section, LPCTSTR entry, LPCTSTR value) = 0;
-    virtual CString getString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue) = 0;
-
-    virtual void setInt(LPCTSTR section, LPCTSTR entry, int value) = 0;
-    virtual int getInt(LPCTSTR section, LPCTSTR entry, int defaultValue) = 0;
-
-    virtual void setUint(LPCTSTR section, LPCTSTR entry, unsigned int value) = 0;
-    virtual unsigned int getUint(LPCTSTR section, LPCTSTR entry, unsigned int defaultValue) = 0;
-
-    virtual void setBool(LPCTSTR section, LPCTSTR entry, bool value) = 0;
-    virtual bool getBool(LPCTSTR section, LPCTSTR entry, bool defaultValue) = 0;
-
-    virtual void flush() = 0;
-    virtual long getLastError() const = 0;
-};
-
-class CRegistryStg : public ICfgStorage
-{
-    CRegistryStg(); // hide
-    CRegistryStg& operator=(const CRegistryStg&); // hide
-public:
-    CRegistryStg(HKEY hKeyParent, LPCTSTR lpszKeyName);
-
-    virtual void setString(LPCTSTR section, LPCTSTR entry, LPCTSTR value);
-    virtual CString getString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue);
-
-    virtual void setInt(LPCTSTR section, LPCTSTR entry, int value);
-    virtual int getInt(LPCTSTR section, LPCTSTR entry, int defaultValue);
-
-    virtual void setUint(LPCTSTR section, LPCTSTR entry, unsigned int value);
-    virtual unsigned int getUint(LPCTSTR section, LPCTSTR entry, unsigned int defaultValue);
-
-    virtual void setBool(LPCTSTR section, LPCTSTR entry, bool value);
-    virtual bool getBool(LPCTSTR section, LPCTSTR entry, bool defaultValue);
-
-    virtual void flush();
-    virtual long getLastError() const;
-
-private:
-    mutable long m_lastError;
-    REGSAM const m_sam;
-    HKEY m_parentKey;
-    CString m_lpszKeyName;
-
-    CRegKey m_key;
-};
-
-class CIniFileStg : public ICfgStorage
-{
-    CIniFileStg(); // hide
-    CIniFileStg& operator=(const CIniFileStg&); // hide
-public:
-    CIniFileStg(LPCTSTR lpszFilePath);
-    ~CIniFileStg();
-
-    virtual void setString(LPCTSTR section, LPCTSTR entry, LPCTSTR value);
-    virtual CString getString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue);
-
-    virtual void setInt(LPCTSTR section, LPCTSTR entry, int value);
-    virtual int getInt(LPCTSTR section, LPCTSTR entry, int defaultValue);
-
-    virtual void setUint(LPCTSTR section, LPCTSTR entry, unsigned int value);
-    virtual unsigned int getUint(LPCTSTR section, LPCTSTR entry, unsigned int defaultValue);
-
-    virtual void setBool(LPCTSTR section, LPCTSTR entry, bool value);
-    virtual bool getBool(LPCTSTR section, LPCTSTR entry, bool defaultValue);
-
-    virtual void flush();
-    virtual long getLastError() const;
-
-private:
-    mutable long m_lastError;
-    CString m_lpszFilePath;
-    CSimpleIni m_ini;
-
-    static HRESULT siErrorToHR_(SI_Error err);
-};
-
-// It's an aggregate, but provides the same interface
-class CConfigStorage : public ICfgStorage
-{
-public:
-    // primary *must* be given, secondary is optional
-    CConfigStorage(ICfgStorage* primary, ICfgStorage* secondary);
-    ~CConfigStorage();
-
-    virtual void setString(LPCTSTR section, LPCTSTR entry, LPCTSTR value);
-    virtual CString getString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue);
-
-    virtual void setInt(LPCTSTR section, LPCTSTR entry, int value);
-    virtual int getInt(LPCTSTR section, LPCTSTR entry, int defaultValue);
-
-    virtual void setUint(LPCTSTR section, LPCTSTR entry, unsigned int value);
-    virtual unsigned int getUint(LPCTSTR section, LPCTSTR entry, unsigned int defaultValue);
-
-    virtual void setBool(LPCTSTR section, LPCTSTR entry, bool value);
-    virtual bool getBool(LPCTSTR section, LPCTSTR entry, bool defaultValue);
-
-private:
-    std::auto_ptr<ICfgStorage> m_primaryStore;
-    std::auto_ptr<ICfgStorage> m_secondaryStore;
-};
 
 class CRegistryUser
 {
@@ -195,7 +82,6 @@ public:
 };
 
 
-#ifndef __NOT_WDS
 //
 // CPersistence. Reads from and writes to the registry all the persistent settings
 // like window position, column order etc.
@@ -401,6 +287,5 @@ private:
     CString m_reportPrefix;
     CString m_reportSuffix;
 };
-#endif // __NOT_WDS
 
 #endif // __WDS_OPTIONS_H__
