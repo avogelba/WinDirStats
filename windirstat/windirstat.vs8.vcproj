@@ -395,10 +395,6 @@
 	</References>
 	<Files>
 		<File
-			RelativePath="..\CHANGELOG.txt"
-			>
-		</File>
-		<File
 			RelativePath="..\CONTRIBUTORS.txt"
 			>
 		</File>
@@ -410,10 +406,6 @@
 				Name="Common"
 				Filter=""
 				>
-				<File
-					RelativePath="..\common\SimpleIni.h"
-					>
-				</File>
 				<File
 					RelativePath="..\common\buildnumber.h"
 					>
@@ -543,6 +535,10 @@
 			</File>
 			<File
 				RelativePath="PageTreemap.h"
+				>
+			</File>
+			<File
+				RelativePath="..\3rdparty\SimpleIni.h"
 				>
 			</File>
 			<File
@@ -890,14 +886,6 @@
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath="..\TESTPLAN.txt"
-			>
-		</File>
-		<File
-			RelativePath="..\TODO.txt"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

@@ -30,7 +30,7 @@
 #include "treemap.h"
 #endif // __NOT_WDS
 #include <common/wds_constants.h>
-#include <common/SimpleIni.h>
+#include <3rdparty/SimpleIni.h>
 #include <atlbase.h> // CRegKey
 #include <memory>
 
