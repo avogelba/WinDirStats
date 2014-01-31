@@ -1,6 +1,5 @@
 #ifndef __W32RESEMBED_H_VER__
-#define __W32RESEMBED_H_VER__ 2012121805
-// $Id: w32resembed.h,v c46495b518e1 2012/12/18 05:27:02 oliver $
+#define __W32RESEMBED_H_VER__ 2014013101
 #if (defined(_MSC_VER) && (_MSC_VER >= 1020)) || defined(__MCPP)
 #pragma once
 #endif // Check for "#pragma once" support
