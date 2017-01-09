@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="buildvm"
+	ProjectGUID="{F949C208-7A2E-4B1C-B74D-956E88542A26}"
+	RootNamespace="buildvm"
+	Keyword="Win32Proj"
+	>
+	<Platforms>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Header Files"
+			Filter=""
+			>
+			<File
+				RelativePath="host\buildvm.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Source Files"
+			Filter=""
+			>
+			<File
+				RelativePath="host\buildvm.c"
+				>
+			</File>
+			<File
+				RelativePath="host\buildvm_asm.c"
+				>
+			</File>
+			<File
+				RelativePath="host\buildvm_fold.c"
+				>
+			</File>
+			<File
+				RelativePath="host\buildvm_lib.c"
+				>
+			</File>
+			<File
+				RelativePath="host\buildvm_peobj.c"
+				>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>
