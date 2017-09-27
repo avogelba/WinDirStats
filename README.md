@@ -58,7 +58,7 @@ We're not aware of an alternative for Windows at this moment, but
 
 ## Building from source
 
-Please refer to the project Wiki page [Building](https://bitbucket.org/windirstat/windirstat/wiki/Building).
+Please refer to the project Wiki page [Building](https://github.com/avogelba/WinDirStats/wiki/Building).
 
 ## Contributing
 
