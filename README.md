@@ -1,4 +1,6 @@
-﻿# WinDirStat - Windows Directory Statistics
+﻿ARCHIVED!!
+
+# WinDirStat - Windows Directory Statistics
 
 ## Copyright and licenses
 
